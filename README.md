@@ -5,3 +5,5 @@ I had to use some curl documentation to ensure I was using the right syntax I'll
 curl link: https://curl.se/windows/
 
 curl documentation: https://curl.se/libcurl/c/libcurl-tutorial.html
+
+Meteomatics getting started link with parameters and foramting info: https://www.meteomatics.com/en/api/getting-started/
