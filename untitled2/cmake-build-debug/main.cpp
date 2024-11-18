@@ -2,6 +2,7 @@
 #include <curl/curl.h>
 #include <string>
 #include <map>
+#include <nlohmann/json.hpp>
 
 // Callback function to write the API response data into a string
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* response) {
