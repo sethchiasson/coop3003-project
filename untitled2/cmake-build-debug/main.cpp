@@ -87,8 +87,20 @@ int main() {
         if (res != CURLE_OK) {
             std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
         } else {
-            // Print the API response
-            std::cout << "Weather Data for " << selected_city << ": " << response << std::endl;
+            try {
+                // Parse the JSON response using nlohmann/json
+                nlohmann::json jsonResponse = nlohmann::json::parse(response);
+
+                // Extracting temperature (assuming a similar JSON structure as explained earlier)
+                double temperature = jsonResponse["data"][0]["coordinates"][0]["dates"][0]["value"];
+
+                // Print extracted temperature
+                std::cout << "\nWeather Data for " << selected_city << ":" << std::endl;
+                std::cout << "Temperature: " << temperature << "°C" << std::endl;
+
+            } catch (const nlohmann::json::exception& e) {
+                std::cerr << "Error parsing JSON: " << e.what() << std::endl;
+            }
         }
 
         // Clean up
@@ -99,20 +111,3 @@ int main() {
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
